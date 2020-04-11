@@ -65,7 +65,6 @@ class WorkerThread(threading.Thread):
     def _check_for_keys(self):
         for key in [0, 1, 2]:
             if self._keys.is_key_pressed(key):
-                print('key! %i' % key)
                 self._type_entry(self._status['entries'][key])
 
     @classmethod
