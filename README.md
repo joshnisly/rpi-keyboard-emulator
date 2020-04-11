@@ -5,6 +5,8 @@ Uses a Raspberry Pi Zero W (W is needed to display web interface while USB HID i
 
 Display/keys: https://www.pishop.us/product/240x240-1-3inch-ips-lcd-display-hat-for-raspberry-pi/
 
+Case STL: https://www.thingiverse.com/thing:3328994. This needs a bit of modification to work well.
+
 ### Setup
 * To set up the display, follow parts of https://www.waveshare.com/wiki/Libraries_Installation_for_RPi:
   * The section "Install C Library bcm2835"
