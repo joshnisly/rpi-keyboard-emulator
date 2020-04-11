@@ -42,6 +42,7 @@ class WorkerThread(threading.Thread):
         self._cached_status = copy.deepcopy(self._status)
         self._display = Display()
         self._keys = KeyHandler()
+        self._display.draw_text('Ready', (80, 5), 'white')
 
     def run(self):
         while True:
