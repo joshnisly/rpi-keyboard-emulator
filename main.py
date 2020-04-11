@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import copy
+import subprocess
 import threading
 import time
 
@@ -42,7 +43,12 @@ class WorkerThread(threading.Thread):
         self._cached_status = copy.deepcopy(self._status)
         self._display = Display()
         self._keys = KeyHandler()
-        self._display.draw_text('Ready', (80, 5), 'white')
+        # Try to get the IP address. If unavailable, just say Ready
+        try:
+            banner = subprocess.check_output(['hostname', '-I']).decode('utf8').strip()
+        except Exception:
+            banner = 'Ready'
+        self._display.draw_text(banner, (50, 5), 'white')
 
     def run(self):
         while True:
@@ -177,5 +183,6 @@ class Display:
 
 if __name__ == '__main__':
     worker_thread = WorkerThread(APP_STATUS)
+    worker_thread.daemon = True
     worker_thread.start()
     application.run(debug=True, host='0.0.0.0', use_reloader=False)
